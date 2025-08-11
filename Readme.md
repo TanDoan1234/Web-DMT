@@ -64,6 +64,8 @@ erDiagram
   USERS ||--o{ AUDIT_LOGS : "1..N"
 ```
 
+---
+
 ## 2. Nguyên tắc thiết kế & ràng buộc chính
 
 ### 2.1 Nguyên tắc
