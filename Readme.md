@@ -195,7 +195,7 @@ Hệ thống DB phục vụ **trung tâm giáo dục** với quy trình:
 
 ---
 
-## 🔎 ERD trực tiếp trong Markdown (Mermaid)
+## 🔎 ERD
 
 ```mermaid
 erDiagram
