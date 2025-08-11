@@ -199,7 +199,11 @@ erDiagram
 
 #### `grade_items`
 
-- Cột điểm cấu hình cho lớp (optional).
+- Cột điểm cấu hình cho lớp (tùy chọn). Dùng để đặt tên cột điểm, gắn trọng số và (nếu muốn) liên kết với thành phần khóa học.
+- Không lưu điểm từng học sinh; điểm đến từ `assignments` → `submissions` → `grades` và được tổng hợp theo quy tắc lớp.
+- Ảnh hưởng tính toán: dùng để tổng hợp điểm cuối kỳ (`grade_aggregates`) và theo thành phần (`grade_component_aggregates`).
+- Trường tối thiểu gợi ý: `class_id`, `name`, `weight_percent`, `course_component_id?`, `order_index`.
+- Mở rộng (nếu cần): map `assignments.grade_item_id` hoặc thêm bảng nhập tay cho cột không có bài nộp.
 
 #### `grade_aggregates`
 
