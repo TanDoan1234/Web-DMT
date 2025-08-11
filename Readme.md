@@ -105,21 +105,35 @@ Hệ thống DB phục vụ **trung tâm giáo dục** với quy trình:
 
 ---
 
-### 3.3 IELTS Components
+### 3.3 Course Components (phân nhỏ khóa học)
 
-#### `skills`
+Hệ thống cho phép chia mỗi **course** thành nhiều **component** (thành phần) để quản lý học liệu, bài tập và điểm theo từng phần.
 
-- **Mục đích**: Danh sách kỹ năng IELTS (READING, LISTENING, WRITING, SPEAKING).
+- **skills**: Từ điển các loại thành phần.
+  - Có thể là **kỹ năng** (Reading, Listening, Writing, Speaking cho IELTS),  
+    **miền nội dung** (Đại số, Hình học cho Toán), hoặc **chương** (Chương 1 – Cơ học, Chương 2 – Nhiệt học cho Vật lý).
+- **course_components**: Các thành phần cụ thể thuộc một course, gắn với một skill.
+  - Có thể đặt `weight_percent` nếu muốn tính điểm tổng theo trọng số từng phần.
+  - Dùng cho bất kỳ môn học nào, không giới hạn ở IELTS.
 
-#### `course_components`
+**Ví dụ:**
+| Course | Component Name | Skill Code | Weight |
+|----------------|---------------|--------------|--------|
+| IELTS Advanced | Reading | READING | 25% |
+| IELTS Advanced | Listening | LISTENING | 25% |
+| IELTS Advanced | Writing | WRITING | 25% |
+| IELTS Advanced | Speaking | SPEAKING | 25% |
+| Toán 8 | Đại số 8 | ALGEBRA_8 | 60% |
+| Toán 8 | Hình học 8 | GEOMETRY_8 | 40% |
+| Lý 8 | Cơ học | MECHANICS_8 | 30% |
+| Lý 8 | Nhiệt học | THERMAL_8 | 30% |
+| Lý 8 | Điện học | ELECTRIC_8 | 40% |
 
-- **Mục đích**: Thành phần/kỹ năng của khóa (gắn với skill).
-- **weight_percent**: trọng số tính điểm.
+**Lợi ích:**
 
-#### `grade_component_aggregates`
-
-- **Mục đích**: Điểm tổng theo thành phần kỹ năng.
-- **Unique**: `(enrollment_id, course_component_id)`.
+- Quản lý tài liệu, video, bài tập theo từng phần của khóa học.
+- Tính điểm và báo cáo kết quả học tập theo từng thành phần.
+- Dùng chung cơ chế cho cả môn IELTS, Toán, Lý, Hóa, v.v.
 
 ---
 
