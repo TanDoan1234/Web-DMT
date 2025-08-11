@@ -15,7 +15,7 @@ Hệ thống DB phục vụ **trung tâm giáo dục** với quy trình:
 
 1. RBAC (Role-Based Access Control) – `roles`, `users`, `students`.
 2. Academics – `subjects`, `courses`, `classes`, `class_meetings`, `enrollments`, `attendance`.
-3. IELTS Components – `skills`, `course_components`, `grade_component_aggregates`.
+3. Course Components – `skills`, `course_components`, `grade_component_aggregates`.
 4. Learning Assets – `materials`, `videos`, `video_access_logs`.
 5. Assignments & Grades – `assignments`, `submissions`, `grades`, `grade_items`, `grade_aggregates`.
 6. Ops – `audit_logs`, `site_settings`.
