@@ -22,6 +22,48 @@ Hệ thống DB phục vụ **trung tâm giáo dục** với quy trình:
 
 ---
 
+## 🔎 ERD
+
+```mermaid
+erDiagram
+  ROLES ||--o{ USERS : "1..N"
+  USERS ||--|| STUDENTS : "1..1"
+
+  SUBJECTS ||--o{ COURSES : "1..N"
+  COURSES ||--o{ CLASSES : "1..N"
+  CLASSES ||--o{ CLASS_MEETINGS : "1..N"
+
+  CLASSES ||--o{ ENROLLMENTS : "1..N"
+  STUDENTS ||--o{ ENROLLMENTS : "1..N"
+  CLASS_MEETINGS ||--o{ ATTENDANCE : "1..N"
+  ENROLLMENTS ||--o{ ATTENDANCE : "1..N"
+
+  CLASSES ||--o{ ASSIGNMENTS : "1..N"
+  ASSIGNMENTS ||--o{ SUBMISSIONS : "1..N"
+  ENROLLMENTS ||--o{ SUBMISSIONS : "1..N"
+  SUBMISSIONS ||--|| GRADES : "1..1"
+
+  SKILLS ||--o{ COURSE_COMPONENTS : "1..N"
+  COURSES ||--o{ COURSE_COMPONENTS : "1..N"
+  ENROLLMENTS ||--o{ GRADE_COMPONENT_AGGREGATES : "1..N"
+  COURSE_COMPONENTS ||--o{ GRADE_COMPONENT_AGGREGATES : "1..N"
+
+  CLASSES ||--o{ MATERIALS : "1..N"
+  COURSES ||--o{ MATERIALS : "1..N"
+  COURSE_COMPONENTS ||--o{ MATERIALS : "1..N"
+
+  CLASSES ||--o{ VIDEOS : "1..N"
+  CLASS_MEETINGS ||--o{ VIDEOS : "1..N"
+  COURSE_COMPONENTS ||--o{ VIDEOS : "1..N"
+  VIDEOS ||--o{ VIDEO_ACCESS_LOGS : "1..N"
+  USERS ||--o{ VIDEO_ACCESS_LOGS : "1..N"
+
+  CLASSES ||--o{ GRADE_ITEMS : "1..N"
+  ENROLLMENTS ||--|| GRADE_AGGREGATES : "1..1"
+
+  USERS ||--o{ AUDIT_LOGS : "1..N"
+```
+
 ## 2. Nguyên tắc thiết kế & ràng buộc chính
 
 ### 2.1 Nguyên tắc
@@ -208,45 +250,3 @@ Hệ thống cho phép chia mỗi **course** thành nhiều **component** (thàn
 > App nên đọc `roles.capabilities_json` để map quyền thay vì hardcode hoàn toàn, giúp linh hoạt mở rộng.
 
 ---
-
-## 🔎 ERD
-
-```mermaid
-erDiagram
-  ROLES ||--o{ USERS : "1..N"
-  USERS ||--|| STUDENTS : "1..1"
-
-  SUBJECTS ||--o{ COURSES : "1..N"
-  COURSES ||--o{ CLASSES : "1..N"
-  CLASSES ||--o{ CLASS_MEETINGS : "1..N"
-
-  CLASSES ||--o{ ENROLLMENTS : "1..N"
-  STUDENTS ||--o{ ENROLLMENTS : "1..N"
-  CLASS_MEETINGS ||--o{ ATTENDANCE : "1..N"
-  ENROLLMENTS ||--o{ ATTENDANCE : "1..N"
-
-  CLASSES ||--o{ ASSIGNMENTS : "1..N"
-  ASSIGNMENTS ||--o{ SUBMISSIONS : "1..N"
-  ENROLLMENTS ||--o{ SUBMISSIONS : "1..N"
-  SUBMISSIONS ||--|| GRADES : "1..1"
-
-  SKILLS ||--o{ COURSE_COMPONENTS : "1..N"
-  COURSES ||--o{ COURSE_COMPONENTS : "1..N"
-  ENROLLMENTS ||--o{ GRADE_COMPONENT_AGGREGATES : "1..N"
-  COURSE_COMPONENTS ||--o{ GRADE_COMPONENT_AGGREGATES : "1..N"
-
-  CLASSES ||--o{ MATERIALS : "1..N"
-  COURSES ||--o{ MATERIALS : "1..N"
-  COURSE_COMPONENTS ||--o{ MATERIALS : "1..N"
-
-  CLASSES ||--o{ VIDEOS : "1..N"
-  CLASS_MEETINGS ||--o{ VIDEOS : "1..N"
-  COURSE_COMPONENTS ||--o{ VIDEOS : "1..N"
-  VIDEOS ||--o{ VIDEO_ACCESS_LOGS : "1..N"
-  USERS ||--o{ VIDEO_ACCESS_LOGS : "1..N"
-
-  CLASSES ||--o{ GRADE_ITEMS : "1..N"
-  ENROLLMENTS ||--|| GRADE_AGGREGATES : "1..1"
-
-  USERS ||--o{ AUDIT_LOGS : "1..N"
-```
